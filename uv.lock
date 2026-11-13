@@ -103,7 +103,7 @@ wheels = [
 ]
 
 [[package]]
-name = "template-agent-skill"
+name = "kiss-skill"
 version = "0.1.0a1"
 source = { virtual = "." }
 

@@ -1,12 +1,13 @@
 # APM package metadata for reproducible installation and audit.
 # The standard skills/<name>/SKILL.md layout is auto-detected by APM.
-name: template-agent-skill
-version: 2.1.0
+name: kiss
+version: 1.0.0
 description: >-
-  Template for standalone Agent Skill plugin repositories with validation, locked Python tooling, tests, and CI. Use
-  when:
-  creating or validating the organization template for a dedicated skill repository. Triggers: agent skill template,
-  standalone skill repository, skill plugin template.
+  Close a decision that has several valid options by picking the smallest option that meets the actual requirement,
+  writing the decision into the decision doc or ticket, and parking every non-essential refinement as an explicit
+  to-refine-later item. Use when: a decision has several valid options, a design or process discussion keeps growing, or
+  an open decision needs to be closed. Triggers: KISS, keep it simple, simplest option, smallest option, lock the
+  decision, park the rest.
 
 # APM producer metadata. `apm pack --force` generates .claude-plugin/plugin.json.
 author:
