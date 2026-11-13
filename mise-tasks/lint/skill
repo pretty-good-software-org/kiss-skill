@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Validate the plugin and Agent Skill structure"
+set -euo pipefail
+
+MISE_ENV=development mise exec -- skillctl validate claude-plugin .

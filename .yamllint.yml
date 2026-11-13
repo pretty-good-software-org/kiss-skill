@@ -1,0 +1,19 @@
+---
+# Native repository Yamllint configuration.
+extends: default
+ignore: |
+  apm.lock.yaml
+  apm_modules/
+rules:
+  line-length:
+    max: 120
+    level: error
+  indentation:
+    spaces: 2
+    indent-sequences: true
+  comments:
+    min-spaces-from-content: 1
+  truthy:
+    allowed-values: ['true', 'false', 'on', 'off']
+  document-start: disable
+  comments-indentation: disable

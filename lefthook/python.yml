@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  commands:
+    ruff-check:
+      glob: "**/*.py"
+      run: uv run --locked ruff check {staged_files}
+      fail_text: "ruff check found issues"
+
+    ruff-format:
+      glob: "**/*.py"
+      run: uv run --locked ruff format --check {staged_files}
+      fail_text: "ruff format check failed (run: uv run --locked ruff format)"
+
+pre-push:
+  commands:
+    pytest:
+      run: uv run --locked pytest
+      fail_text: "pytest failed"

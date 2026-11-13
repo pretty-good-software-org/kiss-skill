@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Verify uv uses the exact Python runtime pinned by Mise"
+set -euo pipefail
+
+expected=$(mise which python)
+actual=$(uv python find)
+
+if [ "$(realpath "$actual")" != "$(realpath "$expected")" ]; then
+  echo "FAIL uv must use Mise Python: expected $expected, got $actual" >&2
+  exit 1
+fi
+
+echo "uv Python matches Mise: $actual"

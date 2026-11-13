@@ -1,0 +1,8 @@
+{
+  "name": "template-agent-skill",
+  "version": "2.1.0",
+  "description": "Template for standalone Agent Skill plugin repositories with validation, locked Python tooling, tests, and CI. Use when: creating or validating the organization template for a dedicated skill repository. Triggers: agent skill template, standalone skill repository, skill plugin template.",
+  "author": {
+    "name": "pretty-good-software-org"
+  }
+}

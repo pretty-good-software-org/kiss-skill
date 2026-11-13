@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#MISE description="Run the test suite"
+#MISE depends=["test:plugin-manifest", "test:python-runtime"]
+set -euo pipefail
+
+uv run --locked pytest
+
+if [ -d .pytest_cache ]; then
+  echo "FAIL pytest must not leave .pytest_cache Markdown for repository-wide format checks" >&2
+  exit 1
+fi

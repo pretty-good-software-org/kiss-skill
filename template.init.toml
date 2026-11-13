@@ -1,0 +1,18 @@
+# Template initialization manifest consumed by `orgctl repo init`.
+# {repo} and {owner} expand from the new repository's origin remote.
+
+# Template-only smoke tooling: derived repositories exercise the released
+# orgctl binary through CI instead, so they must not retain this fixture.
+remove = ["tools/smoke_template.py", "tests/test_smoke_template.py", "mise-tasks/test/template-smoke"]
+
+[replace]
+"`template-agent-skill` is the canonical organization template for repositories that publish one standalone Agent Skill" = "`{repo}` publishes one standalone Agent Skill"
+"# Agent Instructions: template-agent-skill" = "# Agent Instructions: {repo}"
+"Template for standalone Agent Skill plugin repositories with validation, locked Python tooling, tests, and CI. Use when: creating or validating the organization template for a dedicated skill repository. Triggers: agent skill template, standalone skill repository, skill plugin template." = "Agent Skill plugin provided by {repo}. Use when: working with the behavior documented by {repo}. Triggers: {repo}, agent skill."
+"Template for standalone Agent Skill plugin repositories with locked Python tooling, validation, and tests" = "Standalone Agent Skill plugin repository for {repo}"
+"description: >-\n  Template for standalone Agent Skill plugin repositories with validation, locked Python tooling, tests, and CI. Use\n  when:\n  creating or validating the organization template for a dedicated skill repository. Triggers: agent skill template,\n  standalone skill repository, skill plugin template." = "description: >-\n  Agent Skill plugin provided by {repo}. Use\n  when:\n  working with the behavior documented by {repo}. Triggers: {repo},\n  agent skill."
+"# Standalone Agent Skill repository template" = "# {repo}"
+"template-agent-skill" = "{repo}"
+
+[rename]
+"skills/template-agent-skill" = "skills/{repo}"

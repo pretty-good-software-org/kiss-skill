@@ -1,0 +1,23 @@
+pre-commit:
+  parallel: true
+  commands:
+    actionlint:
+      glob: ".github/workflows/*.{yaml,yml}"
+      run: actionlint -color -oneline {staged_files}
+      fail_text: "actionlint found issues"
+
+    yamllint:
+      glob: "**/*.{yaml,yml}"
+      run: yamllint --strict {staged_files}
+      fail_text: "yamllint found issues"
+
+    markdown-format:
+      glob: "**/*.md"
+      run: >-
+        rumdl fmt --extend-enable MD029,MD060 --config 'MD060.enabled = true'
+        --check -- {staged_files}
+      fail_text: "rumdl found formatting issues"
+    rumdl-lint:
+      glob: "**/*.md"
+      run: rumdl check --deny-config-warnings -- {staged_files}
+      fail_text: "rumdl found lint issues"

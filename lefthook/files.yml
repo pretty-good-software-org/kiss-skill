@@ -1,0 +1,24 @@
+# Lefthook remains the orchestrator; these commands come from the pinned
+# pre-commit-hooks release in .mise.toml and mise.lock.
+pre-commit:
+  parallel: true
+  commands:
+    trailing-whitespace:
+      glob: "**/*.{sh,yaml,yml,md,json,toml}"
+      run: trailing-whitespace-fixer {staged_files}
+      stage_fixed: true
+      fail_text: "trailing whitespace found"
+
+    end-of-file:
+      glob: "**/*.{sh,yaml,yml,md,json,toml}"
+      run: end-of-file-fixer {staged_files}
+      stage_fixed: true
+      fail_text: "files must end with newline"
+
+    check-large-files:
+      run: check-added-large-files --maxkb=500 --enforce-all {staged_files}
+      fail_text: "file exceeds 500KB limit"
+
+    check-merge-conflict:
+      run: check-merge-conflict --assume-in-merge {staged_files}
+      fail_text: "merge conflict markers found"

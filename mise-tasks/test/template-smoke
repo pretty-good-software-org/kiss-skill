@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Instantiate and verify a derived Agent Skill repository"
+set -euo pipefail
+
+MISE_ENV=development mise exec -- uv run --locked python tools/smoke_template.py

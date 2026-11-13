@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Lint Markdown files with rumdl"
+set -euo pipefail
+
+git ls-files -z -- '*.md' | xargs -0 rumdl check --deny-config-warnings --

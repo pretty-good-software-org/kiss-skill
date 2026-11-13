@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#MISE description="Run all linters"
+#MISE depends=["check:markdown-format", "lint:actionlint", "lint:yamllint", "lint:rumdl", "lint:python", "lint:audit"]
+set -euo pipefail

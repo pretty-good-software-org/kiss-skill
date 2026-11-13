@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  MISE_ENV: ci
+
+# One live run per ref — a new push supersedes the queued/running one
+# instead of piling up when runners are saturated or offline.
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 10
+    steps:
+      - uses: pretty-good-software-org/ci-shared/actions/setup/mise@d849c5eec90735f14291eb9a0e61733ed38cfb38 # v1
+      - run: mise run test:default

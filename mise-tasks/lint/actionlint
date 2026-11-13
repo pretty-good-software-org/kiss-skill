@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#MISE description="Lint GitHub Actions workflows"
+set -euo pipefail
+
+if ! command -v shellcheck >/dev/null 2>&1; then
+  echo "shellcheck not found: actionlint would skip shell linting in run: blocks and still exit 0." >&2
+  echo "Add shellcheck to [tools] in .mise.toml, then run: mise install" >&2
+  exit 1
+fi
+
+actionlint -color -oneline

@@ -1,0 +1,2 @@
+# CI profile: intentionally empty.
+# CI uses only the base tools from .mise.toml.

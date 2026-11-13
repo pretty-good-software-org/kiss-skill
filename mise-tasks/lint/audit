@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Fail on a security advisory in the dependency tree"
+set -euo pipefail
+
+osv-scanner scan source --lockfile uv.lock

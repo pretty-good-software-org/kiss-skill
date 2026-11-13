@@ -1,0 +1,31 @@
+min_version = "2026.7.7"
+
+# Base tool versions — shared across all environments
+# Domain-specific tools should be added by derived templates.
+[settings]
+experimental = true
+
+# Lock entries resolve python-build-standalone artifacts, so every platform
+# must select that backend instead of falling back to an unlocked source build.
+[settings.python]
+compile = false
+
+[tools]
+shellcheck = "0.11.0"
+"aqua:google/osv-scanner" = "2.6.0"
+"github:miniscruff/changie" = "1.24.0"
+cocogitto = "6.5.0"
+actionlint = "1.7.11"
+yamllint = "1.38.0"
+rumdl = "0.2.38"
+"pipx:pre-commit-hooks" = "6.0.0"
+# APM v0.26.0 has no GitHub artifact attestations; its locked checksums are
+# the deliberate provenance exception for this tool.
+"github:microsoft/apm" = "0.26.0"
+python = "3.10.18"
+uv = "0.11.26"
+
+[env]
+# uv otherwise prefers its separately managed Python installation over the
+# exact runtime selected by Mise, making the Python pin ineffective.
+UV_NO_MANAGED_PYTHON = "1"
