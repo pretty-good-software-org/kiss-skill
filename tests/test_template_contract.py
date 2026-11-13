@@ -74,7 +74,7 @@ def test_template_init_renames_the_nested_skill_directory() -> None:
     manifest_path = REPO_ROOT / "template.init.toml"
     if manifest_path.exists():
         manifest = tomllib.loads(manifest_path.read_text())
-        assert manifest["rename"] == {"skills/template-agent-skill": "skills/{repo}"}, (
+        assert manifest["rename"] == {"skills/kiss-skill": "skills/{repo}"}, (
             "orgctl must rename the canonical nested skill directory"
         )
         return
@@ -84,8 +84,8 @@ def test_template_init_renames_the_nested_skill_directory() -> None:
     )
     skill_path = REPO_ROOT / "skills" / plugin["name"] / "SKILL.md"
     assert skill_path.is_file(), "initialized repository must retain the nested skill"
-    assert plugin["name"] == REPO_ROOT.name, (
-        "initialized plugin identity must use the repository name"
+    assert plugin["name"] == "kiss", (
+        "the plugin is named kiss; the repository name kiss-skill is not part of its identity"
     )
 
 
@@ -326,7 +326,7 @@ def test_template_plugin_and_nested_skill_publish_one_identity() -> None:
     skill_path = REPO_ROOT / "skills" / manifest["name"] / "SKILL.md"
     skill_text = skill_path.read_text()
     assert_plugin_manifest_contract(manifest)
-    assert manifest["name"] == "template-agent-skill", "template plugin identity must remain stable"
+    assert manifest["name"] == "kiss", "plugin identity must remain kiss"
     assert f"name: {manifest['name']}" in skill_text, "nested SKILL.md must expose plugin identity"
     assert f'description: "{manifest["description"]}"' in skill_text, (
         "nested description must mirror plugin.json"
